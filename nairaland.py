@@ -68,13 +68,13 @@ def naira_news():
         print('There is error somewhere...')
         return
 
-def request():
+def command_me():
     try:
         print('Welcome! We can scrape the categories and titles for you.\nJust enter your request below as "category" or "news".')
         request = input('Enter your request here as NEWS or CATEGORIES\n')
-        if request.lower() == 'news':
+        if request.strip().lower() == 'news':
             naira_news()
-        elif request.lower() == 'categories':
+        elif request.strip().lower() == 'categories':
             nairaland_sections()
     except:
         print('Error...')
@@ -85,8 +85,7 @@ if __name__ == '__main__':
         options = Options() 
         options.add_experimental_option('detach', True)
         driver = webdriver.Chrome(service = service, options = options)
-        # naira_news()
-        request()
+        command_me()
         sleep(5)
     except:
         'Something is wrong... \nConnect to the internet or check your code!'
