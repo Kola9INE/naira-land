@@ -5,6 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import pandas as pd
+from datetime import datetime
 
 def nairaland_sections():
     try:
@@ -19,7 +20,7 @@ def nairaland_sections():
             'SECTION': title_text,
             'SECTION_URL': title_url
         }
-        path = 'naira_sections.parquet'
+        path = r'C:\Users\Kola PC\Desktop\examples\selenium_tests\NAIRALAND_SCRAPE\naira_sections.parquet'
         print(f'Saving data as parquet at {path}')
         df = pd.DataFrame(data)
         df.to_parquet(path)
@@ -56,9 +57,11 @@ def naira_news():
         
         df = pd.DataFrame({
             'TITLE':TITLE,
-            'URL':URL
+            'URL':URL,
+            'TIME':datetime.now().strftime('%H:%M:%S'),
+            'DATE':datetime.now().strftime('%Y-%m-%d')
         })
-        path = 'nairanews.parquet'
+        path = r'C:\Users\Kola PC\Desktop\examples\selenium_tests\NAIRALAND_SCRAPE\nairanews.parquet'
         print(f'Saving data as parquet in {path}')
         df.to_parquet(path)
         rows, columns = df.shape
@@ -68,7 +71,7 @@ def naira_news():
         print('There is error somewhere...')
         return
 
-def command_me():
+def request():
     try:
         print('Welcome! We can scrape the categories and titles for you.\nJust enter your request below as "category" or "news".')
         request = input('Enter your request here as NEWS or CATEGORIES\n')
@@ -84,8 +87,9 @@ if __name__ == '__main__':
         service = Service()
         options = Options() 
         options.add_experimental_option('detach', True)
+        options.add_argument('--headless')
         driver = webdriver.Chrome(service = service, options = options)
-        command_me()
+        request()
         sleep(5)
     except:
         'Something is wrong... \nConnect to the internet or check your code!'
