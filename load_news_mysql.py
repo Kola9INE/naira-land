@@ -1,3 +1,9 @@
+"""
+Users of this code should include their
+connection parameters for their MySQL
+database as a 'details.toml' file.
+"""
+
 import mysql.connector, toml, pandas as pd
 
 # Creating session to connect to mysql database using connection params.
