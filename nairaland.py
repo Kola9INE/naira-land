@@ -61,7 +61,7 @@ def naira_news():
             'TIME':datetime.now().strftime('%H:%M:%S'),
             'DATE':datetime.now().strftime('%Y-%m-%d')
         })
-        path = r'C:\Users\Kola PC\Desktop\examples\selenium_tests\NAIRALAND_SCRAPE\nairanews.parquet'
+        path = r'nairanews.parquet'
         print(f'Saving data as parquet in {path}')
         df.to_parquet(path)
         rows, columns = df.shape
