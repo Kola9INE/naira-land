@@ -83,6 +83,7 @@ def request():
         print('Error...')
 
 if __name__ == '__main__':
+# Running the program in headless mode.
     try:
         service = Service()
         options = Options() 
