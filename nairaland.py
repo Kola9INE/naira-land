@@ -20,7 +20,7 @@ def nairaland_sections():
             'SECTION': title_text,
             'SECTION_URL': title_url
         }
-        path = r'C:\Users\Kola PC\Desktop\examples\selenium_tests\NAIRALAND_SCRAPE\naira_sections.parquet'
+        path = r'naira_sections.parquet'
         print(f'Saving data as parquet at {path}')
         df = pd.DataFrame(data)
         df.to_parquet(path)
