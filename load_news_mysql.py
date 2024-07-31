@@ -2,7 +2,7 @@ import mysql.connector, toml, pandas as pd
 
 # Creating session to connect to mysql database using connection params.
 def mysql_connect():
-    with open(r'selenium_tests\NAIRALAND_SCRAPE\details.toml', 'r') as f:
+    with open(r'details.toml', 'r') as f:
         file = toml.load(f)
     
     host, username, password = (
